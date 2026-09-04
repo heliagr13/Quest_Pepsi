@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="com.example.scorm.test" version="1.0"
+          xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1
+                              http://www.imsglobal.org/xsd/imscp_v1p1.xsd
+                              http://www.adlnet.org/xsd/adlcp_v1p3
+                              http://www.adlnet.org/xsd/adlcp_v1p3.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 3rd Edition</schemaversion>
+  </metadata>
+  <organizations default="ORG-1">
+    <organization identifier="ORG-1" structure="hierarchical">
+      <title>Квест</title>
+      <item identifier="ITEM-1" identifierref="RES-1" isvisible="true">
+        <title>Квест</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-1" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html"/>
+      <file href="style.css"/>
+      <file href="script.js"/>
+      <file href="fonts/onder/ONDER-REGULAR.TTF"/>
+      <file href="fonts/fira_sans/FiraSans-Regular.ttf"/>
+    </resource>
+  </resources>
+</manifest>

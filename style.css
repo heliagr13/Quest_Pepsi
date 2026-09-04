@@ -1,0 +1,218 @@
+@font-face {
+  font-family: 'Onder';
+  src: url('fonts/onder/ONDER-REGULAR.woff2') format('woff2'),
+       url('fonts/onder/ONDER-REGULAR.woff') format('woff'),
+       url('fonts/onder/ONDER-REGULAR.TTF') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('fonts/fira_sans/FiraSans-Regular.woff2') format('woff2'),
+       url('fonts/fira_sans/FiraSans-Regular.woff') format('woff'),
+       url('fonts/fira_sans/FiraSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #4339AC;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container {
+  width: 1280px;
+  max-width: 95vw;
+  height: 720px;
+  max-height: 95vh;
+  background-color: #2e2a7d;
+  border-radius: 20px;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+.screen {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.screen.active {
+  display: flex;
+}
+
+.title {
+  font-family: 'Onder', serif;
+  font-weight: normal;
+  color: white;
+  font-size: clamp(1.3rem, 4vw, 2.2rem);
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.text, .intro-text, .question-title, .question-text {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.intro-text {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.question-title {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+}
+
+.question-text {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(0.7rem, 4.5vw, 1.1rem);
+  }
+  .text, .intro-text, .question-title, .question-text {
+    font-size: clamp(0.7rem, 4vw, 0.9rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(0.5rem, 5vw, 0.9rem);
+  }
+  .text, .intro-text, .question-title, .question-text {
+    font-size: clamp(0.6rem, 4vw, 0.8rem);
+  }
+}
+
+.lead-bold {
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+.lead-italic {
+  font-style: italic;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  margin: 0 0 14px 0;
+}
+.option {
+  display: block;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  margin: 10px 0;
+  cursor: pointer;
+}
+.option input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.btn {
+  background-color: #79D66B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: clamp(8px, 1.5vw, 12px) clamp(12px, 3vw, 24px);
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+.btn:hover:not(:disabled) {
+  background-color: #5cb653;
+}
+.btn:disabled {
+  background-color: #aacd96;
+  cursor: not-allowed;
+}
+
+/* Фидбек на полупрозрачной белой плашке */
+#feedback {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: black;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-top: 12px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  box-sizing: border-box;
+  display: none;
+}
+
+/* Подсветка правильного варианта (зелёный) */
+.option.correct {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 6px;
+  padding-left: 8px;
+}
+
+/* Подсветка неправильного варианта (красный) */
+.option.incorrect {
+  background-color: #F44336;
+  color: white;
+  border-radius: 6px;
+  padding-left: 8px;
+}
+
+/* --- Новый стиль для результата: меняем порядок текста и кнопки --- */
+#screen-result {
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-result > p#detailed-feedback {
+  order: 0;
+  margin-bottom: 20px;
+  color: white;
+}
+
+#screen-result > button#btn-restart {
+  order: 1;
+  align-self: flex-start;
+}
+
+/* Медиазапросы для адаптивности */
+@media (max-width: 1024px) {
+  .container {
+    width: 90vw;
+    height: auto;
+    max-height: 90vh;
+    padding: 30px 40px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95vw;
+    height: auto;
+    max-height: 90vh;
+    padding: 20px 25px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  body, html {
+    align-items: flex-start;
+    padding: 10px 0;
+  }
+  .container {
+    width: 100vw;
+    height: auto;
+    max-height: 95vh;
+    padding: 15px 15px;
+    border-radius: 0;
+    justify-content: flex-start;
+  }
+}
